@@ -1,8 +1,9 @@
-package com.example.individualtodolist
+package com.example.individualtodolist.models
 
 class ToDoItem {
     companion object Factory {
-        fun create(): ToDoItem = ToDoItem()
+        fun create(): ToDoItem =
+            ToDoItem()
     }
     var objectId: String? = null
     var itemText: String? = null
