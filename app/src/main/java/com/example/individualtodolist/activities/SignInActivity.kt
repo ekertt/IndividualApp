@@ -103,7 +103,7 @@ class SignInActivity : BaseActivity() {
             }
         }
     }
-    fun signInSuccess(){
+    fun signInSuccess(loggedInUser: User) {
         startActivity(Intent(this, MainActivity::class.java))
 
         finish()

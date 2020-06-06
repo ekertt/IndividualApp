@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import com.example.individualtodolist.models.Board
+import com.example.individualtodolist.models.Category
 import com.example.individualtodolist.models.User
 import com.example.individualtodolist.utils.Constants
 
@@ -54,14 +54,14 @@ class FirestoreClass {
             .addOnSuccessListener {
                 document ->
                 Log.i(activity.javaClass.simpleName, document.documents.toString())
-                val boardList: ArrayList<Board> = ArrayList()
+                val categoryList: ArrayList<Category> = ArrayList()
                 for (i in document.documents){
                     //iterate through the document and include every single board to my board list
-                    val board = i.toObject((Board::class.java))!!
+                    val board = i.toObject((Category::class.java))!!
                     board.documentId = i.id
-                    boardList.add(board)
+                    categoryList.add(board)
                 }
-                activity.populateBoardsListToUI(boardList)
+                activity.populateBoardsListToUI(categoryList)
             }.addOnFailureListener{e ->
                 Log.e(activity.javaClass.simpleName, "Error while creating a board", e)
             }
@@ -125,7 +125,7 @@ class FirestoreClass {
                     document ->
                 Log.i(activity.javaClass.simpleName, document.toString())
 
-                var board = document.toObject(Board::class.java)!!
+                var board = document.toObject(Category::class.java)!!
                 board.documentId = document.id
                 activity.boardDetails(board)
 
@@ -135,10 +135,10 @@ class FirestoreClass {
 
     }
 
-    fun createBoard(activity: CreateBoardActivity, board: Board){
+    fun createBoard(activity: CreateCategoryActivity, category: Category){
         mFireStore.collection(Constants.BOARDS)
             .document()
-            .set(board, SetOptions.merge())
+            .set(category, SetOptions.merge())
             .addOnSuccessListener {
                 Log.e(activity.javaClass.simpleName, "Board created successfully")
                 Toast.makeText(activity,
@@ -154,12 +154,12 @@ class FirestoreClass {
                 )
             }
     }
-    fun addUpdateTaskList(activity: TaskListActivity, board: Board){
+    fun addUpdateTaskList(activity: TaskListActivity, category: Category){
         val taskListHashMap = HashMap<String, Any>()
-        taskListHashMap[Constants.TASK_LIST] = board.taskList
+        taskListHashMap[Constants.TASK_LIST] = category.taskList
 
         mFireStore.collection(Constants.BOARDS)
-            .document(board.documentId)
+            .document(category.documentId)
             .update(taskListHashMap)
             .addOnSuccessListener {
                 Log.e(activity.javaClass.simpleName, "TaskList updated successfully")
