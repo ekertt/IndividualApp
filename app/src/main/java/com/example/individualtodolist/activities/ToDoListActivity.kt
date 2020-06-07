@@ -3,7 +3,9 @@ package com.example.individualtodolist.activities
 import activities.BaseActivity
 import com.example.individualtodolist.adapters.ToDoListItemsAdapter
 import android.os.Bundle
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.individualtodolist.R
 import com.example.individualtodolist.firebase.FirestoreClass
 import kotlinx.android.synthetic.main.activity_todo_list.*
@@ -13,6 +15,7 @@ import com.example.individualtodolist.utils.Constants
 
 class ToDoListActivity : BaseActivity() {
     private lateinit var mCategoryDetails: Category
+    private lateinit var list: List<ToDo>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
