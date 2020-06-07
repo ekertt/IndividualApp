@@ -7,14 +7,14 @@ data class Category (
     val name: String ="",
     val assignedTo: ArrayList<String> = ArrayList(),
     var documentId: String ="",
-    var taskList: ArrayList<Task> = ArrayList()
+    var todoList: ArrayList<ToDo> = ArrayList()
 
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.createStringArrayList()!!,
         parcel.readString()!!,
-        parcel.createTypedArrayList(Task.CREATOR)!!
+        parcel.createTypedArrayList(ToDo.CREATOR)!!
     ) {
     }
 
@@ -22,7 +22,7 @@ data class Category (
         parcel.writeString(name)
         parcel.writeStringList(assignedTo)
         parcel.writeString(documentId)
-        parcel.writeTypedList(taskList)
+        parcel.writeTypedList(todoList)
     }
 
     override fun describeContents(): Int {

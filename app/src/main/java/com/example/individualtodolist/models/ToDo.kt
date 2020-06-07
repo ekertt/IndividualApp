@@ -3,7 +3,7 @@ package com.example.individualtodolist.models
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Task (
+data class ToDo (
     var title: String="",
     var createdBy: String =""
 ): Parcelable {
@@ -21,9 +21,9 @@ data class Task (
 
     companion object {
         @JvmField
-        val CREATOR: Parcelable.Creator<Task> = object : Parcelable.Creator<Task> {
-            override fun createFromParcel(source: Parcel): Task = Task(source)
-            override fun newArray(size: Int): Array<Task?> = arrayOfNulls(size)
+        val CREATOR: Parcelable.Creator<ToDo> = object : Parcelable.Creator<ToDo> {
+            override fun createFromParcel(source: Parcel): ToDo = ToDo(source)
+            override fun newArray(size: Int): Array<ToDo?> = arrayOfNulls(size)
         }
     }
 }

@@ -1,5 +1,6 @@
-package activities
+package com.example.individualtodolist.activities
 
+import activities.BaseActivity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -11,16 +12,12 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 import com.example.individualtodolist.models.User
 
 class SignInActivity : BaseActivity() {
-    /**
-     * This function is auto created by Android when the Activity Class is created.
-     */
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        //This call the parent constructor
         super.onCreate(savedInstanceState)
-        // This is used to align the xml view to this class
+
         setContentView(R.layout.activity_sign_in)
 
-        // This is used to hide the status bar and make the splash screen as a full screen activity.
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
@@ -28,16 +25,12 @@ class SignInActivity : BaseActivity() {
 
         setupActionBar()
 
-        // Add click event for sign-in button and call the function to sign in.)
         btn_sign_in.setOnClickListener {
             signInRegisteredUser()
         }
 
     }
 
-    /**
-     * A function for actionBar Setup.
-     */
     private fun setupActionBar() {
 
         setSupportActionBar(toolbar_sign_in_activity)
@@ -51,11 +44,6 @@ class SignInActivity : BaseActivity() {
         toolbar_sign_in_activity.setNavigationOnClickListener { onBackPressed() }
     }
 
-    // TODO (Step 2: A function for Sign-In using the registered user using the email and password.)
-    // START
-    /**
-     * A function for Sign-In using the registered user using the email and password.
-     */
     private fun signInRegisteredUser() {
         // Here we get the text from editText and trim the space
         val email: String = et_email_sign_in.text.toString().trim { it <= ' ' }
@@ -85,9 +73,6 @@ class SignInActivity : BaseActivity() {
         }
     }
 
-    /**
-     * A function to validate the entries of a user.
-     */
     private  fun validateForm(email: String, password: String) : Boolean{
         return when{
             TextUtils.isEmpty(email) ->{
