@@ -25,9 +25,17 @@
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/primary_text_color"
-                android:textSize="18sp"
+                android:textColor="@color/secondary_text_color"
+                android:textSize="25sp"
                 tools:text="Category Name" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/divider_color" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

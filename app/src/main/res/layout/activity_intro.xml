@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="activities.IntroActivity">
+    tools:context=".activities.IntroActivity">
 
     <TextView
         android:id="@+id/tv_app_name_intro"
