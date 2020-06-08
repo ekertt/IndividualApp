@@ -10,6 +10,8 @@ import com.google.firebase.firestore.SetOptions
 import com.example.individualtodolist.models.Category
 import com.example.individualtodolist.models.User
 import com.example.individualtodolist.utils.Constants
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.DocumentSnapshot
 
 
 class FirestoreClass {
@@ -84,6 +86,12 @@ class FirestoreClass {
         }
 
         return currentUserID
+    }
+
+    fun getCurrentUsername(): Task<DocumentSnapshot> {
+        return mFireStore.collection(Constants.USERS)
+            .document(getCurrentUserID())
+            .get()
     }
 
     fun getCategoryDetails(activity: ToDoListActivity, documentId: String) {

@@ -18,6 +18,15 @@
             android:background="@android:color/holo_green_light"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <TextView
+            android:layout_margin="15dp"
+            android:id="@+id/tv_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            tools:text="Created By" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_main" />

@@ -12,6 +12,7 @@ import com.example.individualtodolist.R
 import com.example.individualtodolist.firebase.FirestoreClass
 import kotlinx.android.synthetic.main.app_bar_main.*
 import com.example.individualtodolist.models.Category
+import com.example.individualtodolist.models.User
 import com.example.individualtodolist.utils.Constants
 import kotlinx.android.synthetic.main.content_main.*
 
@@ -67,6 +68,12 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupActionBar() {
+
+        FirestoreClass().getCurrentUsername().addOnSuccessListener { document ->
+            val loggedInUser = document.toObject(User::class.java)!!
+
+            tv_username.text = "Hello ${loggedInUser.name}!"
+        }
         setSupportActionBar(toolbar_main_activity)
     }
 
