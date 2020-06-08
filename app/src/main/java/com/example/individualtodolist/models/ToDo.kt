@@ -2,12 +2,15 @@ package com.example.individualtodolist.models
 
 import android.os.Parcel
 import android.os.Parcelable
+import java.util.*
 
-data class ToDo (
-    var title: String="",
-    var createdBy: String =""
-): Parcelable {
+data class ToDo(
+    var title: String = "",
+    var date: String = "",
+    var createdBy: String = ""
+) : Parcelable {
     constructor(source: Parcel) : this(
+        source.readString()!!,
         source.readString()!!,
         source.readString()!!
     )
@@ -16,6 +19,7 @@ data class ToDo (
 
     override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
         writeString(title)
+        writeString(date)
         writeString(createdBy)
     }
 

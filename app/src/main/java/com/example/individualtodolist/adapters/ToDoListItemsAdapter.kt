@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.individualtodolist.R
 import com.example.individualtodolist.models.ToDo
+import kotlinx.android.synthetic.main.activity_todo_list.view.*
 import kotlinx.android.synthetic.main.item_todo.view.*
 
 open class ToDoListItemsAdapter(
@@ -33,6 +34,7 @@ open class ToDoListItemsAdapter(
 
         if (holder is MyViewHolder) {
             holder.itemView.tv_todo_list_title.text = model.title
+            holder.itemView.tv_todo_list_date.text = model.date
         }
     }
 

@@ -1,6 +1,7 @@
 package com.example.individualtodolist.activities
 
 import activities.BaseActivity
+import android.app.DatePickerDialog
 import com.example.individualtodolist.adapters.ToDoListItemsAdapter
 import android.os.Bundle
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -12,14 +13,19 @@ import kotlinx.android.synthetic.main.activity_todo_list.*
 import com.example.individualtodolist.models.Category
 import com.example.individualtodolist.models.ToDo
 import com.example.individualtodolist.utils.Constants
+import java.util.*
 
 class ToDoListActivity : BaseActivity() {
     private lateinit var mCategoryDetails: Category
-    private lateinit var list: List<ToDo>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_todo_list)
+
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
 
         var categoryDocumentId = ""
         if (intent.hasExtra(Constants.DOCUMENT_ID)) {
@@ -27,11 +33,21 @@ class ToDoListActivity : BaseActivity() {
         }
         FirestoreClass().getCategoryDetails(this, categoryDocumentId)
 
+        et_pick_date.setOnClickListener {
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                tv_date.setText("$mDay/$mMonth/$mYear")
+            }, year, month, day)
+
+            dpd.show()
+        }
+
         ib_done_list_name.setOnClickListener {
             val listName = et_todo_list_name.text.toString()
 
-            if (listName.isNotEmpty()) {
-                createToDoList(listName)
+            val listDate = tv_date.text.toString()
+
+            if (listName.isNotEmpty() && listDate.isNotEmpty()) {
+                createToDoList(listName, listDate)
             }
         }
     }
@@ -54,10 +70,6 @@ class ToDoListActivity : BaseActivity() {
 
         setUpActionBar()
 
-        val addToDoList = ToDo()
-
-        category.todoList.add(addToDoList)
-
         rv_todo_list.layoutManager = LinearLayoutManager(
             this, LinearLayoutManager.VERTICAL, false
         )
@@ -71,10 +83,9 @@ class ToDoListActivity : BaseActivity() {
         FirestoreClass().getCategoryDetails(this, mCategoryDetails.documentId)
     }
 
-    private fun createToDoList(todoListName: String) {
-        val todo = ToDo(todoListName, FirestoreClass().getCurrentUserID())
-        mCategoryDetails.todoList.add(0, todo)
-        mCategoryDetails.todoList.removeAt(mCategoryDetails.todoList.size - 1)
+    private fun createToDoList(todoListName: String, todoListDate: String) {
+        val todo = ToDo(todoListName, todoListDate, FirestoreClass().getCurrentUserID())
+        mCategoryDetails.todoList.add(mCategoryDetails.todoList.size, todo)
 
         FirestoreClass().addUpdateToDoList(this, mCategoryDetails)
     }

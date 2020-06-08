@@ -11,17 +11,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="@dimen/card_view_layout_content_padding">
+
+        <TextView
+            android:id="@+id/tv_todo_list_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="12sp"
+            tools:text="ToDo date" />
 
         <TextView
             android:id="@+id/tv_todo_list_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
             android:textColor="@color/primary_text_color"
             android:textSize="16sp"
-            tools:text="ToDo item" />
+            tools:text="ToDo title" />
+
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
