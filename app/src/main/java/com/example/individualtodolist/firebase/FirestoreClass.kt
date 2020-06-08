@@ -69,7 +69,7 @@ class FirestoreClass {
                     category.documentId = i.id
                     categoryList.add(category)
                 }
-                activity.populateCategoriesListToUI(categoryList)
+                activity.categoriesListToView(categoryList)
             }.addOnFailureListener { e ->
                 Log.e(activity.javaClass.simpleName, "Error while creating a category", e)
             }

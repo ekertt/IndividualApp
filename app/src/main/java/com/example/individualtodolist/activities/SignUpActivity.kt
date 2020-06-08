@@ -50,7 +50,7 @@ class SignUpActivity : BaseActivity() {
         val email: String = et_email.text.toString()
         val password: String = et_password.text.toString()
 
-        if (validateForm(name, email, password)) {
+        if (formValidation(name, email, password)) {
             FirebaseAuth.getInstance()
                 .createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -65,13 +65,10 @@ class SignUpActivity : BaseActivity() {
                         ).show()
                     }
                 }
-
-
         }
-
     }
 
-    private fun validateForm(name: String, email: String, password: String): Boolean {
+    private fun formValidation(name: String, email: String, password: String): Boolean {
         return when {
             TextUtils.isEmpty(email) -> {
                 showErrorSnackBar("Missing an email")
@@ -95,8 +92,7 @@ class SignUpActivity : BaseActivity() {
     fun userRegisteredSuccess() {
         Toast.makeText(
             this,
-            "you have succesfully registered" +
-                    "address", Toast.LENGTH_LONG
+            "you have succesfully registered", Toast.LENGTH_LONG
         ).show()
         FirebaseAuth.getInstance().signOut()
         finish()

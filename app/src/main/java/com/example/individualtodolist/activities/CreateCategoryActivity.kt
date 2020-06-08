@@ -2,7 +2,6 @@ package com.example.individualtodolist.activities
 
 import activities.BaseActivity
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import com.example.individualtodolist.R
 import com.example.individualtodolist.firebase.FirestoreClass
@@ -28,27 +27,6 @@ class CreateCategoryActivity : BaseActivity() {
         }
     }
 
-    // Here the read storage permission result will be handled. And further execution will be done.)
-    /**
-     * This function will notify the user after tapping on allow or deny
-     *
-     * @param requestCode
-     * @param permissions
-     * @param grantResults
-     */
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
-
-    // Get the result of the image selection based on the constant code.)
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-    }
-
     fun categoryCreatedSuccesfully() {
         setResult(Activity.RESULT_OK)
 
@@ -67,9 +45,6 @@ class CreateCategoryActivity : BaseActivity() {
         FirestoreClass().createCategory(this, category)
     }
 
-    /**
-     * A function to setup action bar
-     */
     private fun setupActionBar() {
 
         setSupportActionBar(toolbar_create_category_activity)

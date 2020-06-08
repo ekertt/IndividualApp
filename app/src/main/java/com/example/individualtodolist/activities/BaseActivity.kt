@@ -16,13 +16,10 @@ open class BaseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_base)
     }
 
-    //USING FIREBASE TO GET THE CURRENT USER ID
-    //TO SHOW A USER ONLY THE DATA RELEVANT TO HIS PROFILE
     fun getCurrentUserId(): String {
         return FirebaseAuth.getInstance().currentUser!!.uid
     }
 
-    //TO SHOW
     fun showErrorSnackBar(message: String) {
         val snackBar = Snackbar.make(
             findViewById(android.R.id.content),

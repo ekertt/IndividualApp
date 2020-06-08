@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.content_main.*
 class MainActivity : BaseActivity() {
 
     companion object {
-        const val MY_PROFILE_REQUEST_CODE: Int = 11
         const val CREATE_CATEGORY_REQUEST_CODE: Int = 12
     }
 
@@ -41,7 +40,7 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    fun populateCategoriesListToUI(categoryList: ArrayList<Category>) {
+    fun categoriesListToView(categoryList: ArrayList<Category>) {
 
         if (categoryList.size > 0) {
             rv_categories_list.visibility = View.VISIBLE
@@ -67,7 +66,6 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    //CREATING THE ACTION BAR
     private fun setupActionBar() {
         setSupportActionBar(toolbar_main_activity)
     }
@@ -75,10 +73,6 @@ class MainActivity : BaseActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK
-            && requestCode == MY_PROFILE_REQUEST_CODE
-        ) {
-            FirestoreClass().loadUserData(this)
-        } else if (resultCode == Activity.RESULT_OK
             && requestCode == CREATE_CATEGORY_REQUEST_CODE
         ) {
             FirestoreClass().getCategoryList(this)
