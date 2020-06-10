@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:textSize="16sp"
-            tools:text="Created By" />
+            tools:text="@string/hello_message_user" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

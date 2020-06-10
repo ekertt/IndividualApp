@@ -21,4 +21,5 @@
     <string name="et_pick_date">Pick Date</string>
     <string name="pick_a_date">Pick a date</string>
     <string name="date">Date: </string>
+    <string name="hello_message_user">Hello user</string>
 </resources>

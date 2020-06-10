@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--TODO (Step 4: Design the intro screen layout as per our requirement.)-->
-<!--START-->
-<!--The values for the drawable items, dimen, string and color values are added in their respective folders and files.-->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,11 +12,14 @@
         android:id="@+id/tv_app_name_intro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:text="@string/app_name"
         android:textColor="@android:color/holo_green_light"
         android:textSize="40sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btn_sign_in_intro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_sign_in_intro"
@@ -26,30 +27,28 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@android:color/holo_green_light"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
         android:text="@string/sign_in"
+        android:layout_margin="20dp"
         android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_sign_up_intro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
         android:background="@android:color/white"
         android:gravity="center"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:layout_margin="20dp"
         android:text="@string/sign_up"
         android:textColor="@android:color/holo_green_light"
-        android:textSize="18sp" />
-</LinearLayout>
-    <!--END-->
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_app_name_intro" />
+</androidx.constraintlayout.widget.ConstraintLayout>

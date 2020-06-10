@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--The values for the drawable items, dimen, string and color values are added in their respective folders and files.-->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,7 +12,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_sign_up_activity"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tv_title"
@@ -26,21 +27,24 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:orientation="vertical">
+        android:padding="20dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="40dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="25dp"
             android:elevation="10dp"
-            app:cardCornerRadius="10dp">
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,13 +58,14 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp">
 
-                    <androidx.appcompat.widget.AppCompatEditText
+                    <EditText
                         android:id="@+id/et_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/name"
                         android:inputType="textEmailAddress"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:autofillHints="@string/name" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -70,13 +75,14 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="16dp">
 
-                    <androidx.appcompat.widget.AppCompatEditText
+                    <EditText
                         android:id="@+id/et_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/email"
                         android:inputType="textEmailAddress"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:autofillHints="@string/email" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -86,13 +92,14 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="16dp">
 
-                    <androidx.appcompat.widget.AppCompatEditText
+                    <EditText
                         android:id="@+id/et_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/password"
                         android:inputType="textPassword"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:autofillHints="@string/password" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
@@ -112,5 +119,5 @@
                     android:textSize="18sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-    </LinearLayout>
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
