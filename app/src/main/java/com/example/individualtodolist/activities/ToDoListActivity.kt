@@ -23,6 +23,14 @@ class ToDoListActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_todo_list)
 
+        var categoryDocumentId = ""
+
+        if (intent.hasExtra(Constants.DOCUMENT_ID)) {
+            categoryDocumentId = intent.getStringExtra(Constants.DOCUMENT_ID)
+        }
+
+        FirestoreClass().getCategoryDetails(this, categoryDocumentId)
+
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
