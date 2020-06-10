@@ -1,10 +1,8 @@
 package com.example.individualtodolist.activities
 
-import activities.BaseActivity
 import android.app.DatePickerDialog
 import com.example.individualtodolist.adapters.ToDoListItemsAdapter
 import android.os.Bundle
-import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,9 +27,11 @@ class ToDoListActivity : BaseActivity() {
         val day = c.get(Calendar.DAY_OF_MONTH)
 
         var categoryDocumentId = ""
+
         if (intent.hasExtra(Constants.DOCUMENT_ID)) {
             categoryDocumentId = intent.getStringExtra(Constants.DOCUMENT_ID)
         }
+
         FirestoreClass().getCategoryDetails(this, categoryDocumentId)
 
         et_pick_date.setOnClickListener {
@@ -87,7 +87,7 @@ class ToDoListActivity : BaseActivity() {
     }
 
     private fun createToDoList(todoListName: String, todoListDate: String) {
-        val todo = ToDo(todoListName, todoListDate, FirestoreClass().getCurrentUserID())
+        val todo = ToDo(todoListName, todoListDate)
         mCategoryDetails.todoList.add(mCategoryDetails.todoList.size, todo)
 
         FirestoreClass().addUpdateToDoList(this, mCategoryDetails)

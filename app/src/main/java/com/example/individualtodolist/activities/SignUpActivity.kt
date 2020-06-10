@@ -1,6 +1,5 @@
 package com.example.individualtodolist.activities
 
-import activities.BaseActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.WindowManager
@@ -25,17 +24,15 @@ class SignUpActivity : BaseActivity() {
         )
     }
 
-    //SETTING UP THE ACTION BAR FUNCTION
     private fun setupActionBar() {
         setSupportActionBar(toolbar_sign_up_activity)
 
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
-            //New vector asset with the style of an iOS back button
             actionBar.setHomeAsUpIndicator(R.drawable.ic_black_color_back_24dp)
         }
-        //Adding functionality to the back arrow
+
         toolbar_sign_up_activity.setNavigationOnClickListener {
             onBackPressed()
         }

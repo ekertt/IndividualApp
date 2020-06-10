@@ -1,9 +1,7 @@
-package activities
+package com.example.individualtodolist.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.individualtodolist.R
 import com.google.android.material.snackbar.Snackbar

@@ -1,6 +1,5 @@
 package com.example.individualtodolist.activities
 
-import activities.BaseActivity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -17,11 +16,6 @@ class SignInActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_sign_in)
-
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
 
         setupActionBar()
 
@@ -45,16 +39,13 @@ class SignInActivity : BaseActivity() {
     }
 
     private fun signInRegisteredUser() {
-        // Here we get the text from editText and trim the space
         val email: String = et_email_sign_in.text.toString().trim { it <= ' ' }
         val password: String = et_password_sign_in.text.toString().trim { it <= ' ' }
 
         if (validateForm(email, password)) {
-            // Sign-In using FirebaseAuth
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-
                         Toast.makeText(
                             this@SignInActivity,
                             "You have successfully signed in.",

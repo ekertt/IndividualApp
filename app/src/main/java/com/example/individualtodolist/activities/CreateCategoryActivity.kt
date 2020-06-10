@@ -1,6 +1,5 @@
 package com.example.individualtodolist.activities
 
-import activities.BaseActivity
 import android.app.Activity
 import android.os.Bundle
 import com.example.individualtodolist.R

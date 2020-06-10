@@ -1,6 +1,5 @@
 package com.example.individualtodolist.activities
 
-import activities.BaseActivity
 import com.example.individualtodolist.adapters.CategoryItemsAdapter
 import android.app.Activity
 import android.content.Intent
@@ -68,7 +67,6 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupActionBar() {
-
         FirestoreClass().getCurrentUsername().addOnSuccessListener { document ->
             val loggedInUser = document.toObject(User::class.java)!!
 
