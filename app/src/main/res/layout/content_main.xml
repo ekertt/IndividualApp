@@ -9,19 +9,18 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.MainActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_categories_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_categories_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"/>
-        <TextView
-            android:id="@+id/tv_no_categories_available"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/no_categories_are_available"
-            android:gravity="center"
-            android:textColor="@color/secondary_text_color"
-            />
+    <TextView
+        android:id="@+id/tv_no_categories_available"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/no_categories_are_available"
+        android:textColor="@color/secondary_text_color" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,4 +22,5 @@
     <string name="pick_a_date">Pick a date</string>
     <string name="date">Date: </string>
     <string name="hello_message_user">Hello user</string>
+    <string name="categories">Categories:</string>
 </resources>

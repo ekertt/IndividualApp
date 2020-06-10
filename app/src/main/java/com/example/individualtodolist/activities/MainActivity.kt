@@ -70,7 +70,7 @@ class MainActivity : BaseActivity() {
         FirestoreClass().getCurrentUsername().addOnSuccessListener { document ->
             val loggedInUser = document.toObject(User::class.java)!!
 
-            tv_username.text = "Hello ${loggedInUser.name}!"
+            tv_username.text = "Hello ${loggedInUser.name}! These are your categories of todo lists!"
         }
         setSupportActionBar(toolbar_main_activity)
     }
