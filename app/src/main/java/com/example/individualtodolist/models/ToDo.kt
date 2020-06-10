@@ -2,11 +2,19 @@ package com.example.individualtodolist.models
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "toDo")
 data class ToDo(
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "title")
     var title: String = "",
-    var date: String = "",
-    var createdBy: String = ""
+
+    @ColumnInfo(name = "date")
+    var date: String = ""
 ) : Parcelable {
     constructor(source: Parcel) : this(
         source.readString()!!,

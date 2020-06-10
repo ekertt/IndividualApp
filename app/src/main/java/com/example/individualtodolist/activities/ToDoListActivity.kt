@@ -11,11 +11,13 @@ import com.example.individualtodolist.firebase.FirestoreClass
 import kotlinx.android.synthetic.main.activity_todo_list.*
 import com.example.individualtodolist.models.Category
 import com.example.individualtodolist.models.ToDo
+import com.example.individualtodolist.roomDatabase.ToDoRepository
 import com.example.individualtodolist.utils.Constants
 import java.util.*
 
 class ToDoListActivity : BaseActivity() {
     private lateinit var mCategoryDetails: Category
+    private lateinit var toDoRepository: ToDoRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,14 +27,6 @@ class ToDoListActivity : BaseActivity() {
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
-
-        var categoryDocumentId = ""
-
-        if (intent.hasExtra(Constants.DOCUMENT_ID)) {
-            categoryDocumentId = intent.getStringExtra(Constants.DOCUMENT_ID)
-        }
-
-        FirestoreClass().getCategoryDetails(this, categoryDocumentId)
 
         et_pick_date.setOnClickListener {
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
